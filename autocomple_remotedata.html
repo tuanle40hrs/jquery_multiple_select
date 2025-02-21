@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Multiple Select</title>
+	<script src="jquery3_5.js"></script>
+	<script src="jquery.flexdatalist.js"></script>
+	<link rel="stylesheet" href="jquery.flexdatalist.css">
+</head>
+<body>
+	<br>
+	<div>
+		<h3>Demo autocomplete with multiple select feature</h3>
+		<ul>
+			<li>Remove data source</li>
+		</ul>
+	</div>
+	<label>Select front-end language: ex: Node.js, html...</label>
+	<input type="text" id="frontend" placeholder="Front-end Deve skills"
+	 class="flexdatalist" 
+	data-searchContain='true'
+	multiple='multiple'
+	
+	data-search-in='["name","continent","capital"]' 
+	name="country_name_suggestion">
+	
+	<div>You select: <span id="result"></span></div>
+	<script>
+		$(document).ready(function() {
+			$('.flexdatalist').flexdatalist({
+				minLength: 1,
+				
+				data: 'countries.json',
+				// searchIn: 'name',
+
+			})
+			$('.flexdatalist').on('change', function(event) {
+				event.preventDefault();
+				/* Act on the event */
+				$('#result').text($("#frontend").val());
+				console.log($("#frontend").val());
+			});
+		});
+	</script>
+</body>
+</html>

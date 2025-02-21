@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Multiple Select</title>
+	<!-- <script src="../jquery-ui-1.12.1/external/jquery/jquery.js"></script> -->
+	<script src="../js/jquery3_5.js"></script>
+	<script src="jquery.flexdatalist.js"></script>
+	<link rel="stylesheet" href="jquery.flexdatalist.css">
+</head>
+<body>
+	<br>
+	<div>
+		<h3>Demo autocomplete with multiple select feature</h3>
+		<ul>
+			<li>Local data source</li>
+		</ul>
+	</div>
+	<label>Select front-end language: ex: Node.js, html...</label>
+	<input type="text" id="frontend" placeholder="Front-end Deve skills"
+	 class="flexdatalist" data-min-length="1" 
+	data-searchContain='true'
+	multiple='multiple'
+	list="skillsource"
+	name="skill">
+	<datalist id="skillsource">
+		<option value="Node.js">Node.js</option>
+		<option value="Accessibility">Accessibility</option>
+		<option value="Wireframing">Wireframing</option>
+		<option value="HTML5">HTML5</option>
+		<option value="CSS3">CSS3</option>
+		<option value="DOM Manipulation">DOM Manipulation</option>
+		<option value="MVC">MVC</option>
+		<option value="MVVM">MVVM</option>
+		<option value="JavaScript">JavaScript</option>
+		<option value="jQuery">jQuery</option>
+		<option value="ReactJS">ReactJS</option>
+	</datalist>
+	<div>You select: <span id="result"></span></div>
+	<script>
+		$(document).ready(function() {
+			$('.flexdatalist').flexdatalist({
+				minLength: 1,
+				valuesSeparator:',', //  Delimiter used in multiple values.
+
+
+			})
+			$('.flexdatalist').on('change', function(event) {
+				event.preventDefault();
+				/* Act on the event */
+				$('#result').text($("#frontend").val());
+				console.log($("#frontend").val());
+			});
+		});
+	</script>
+</body>
+</html>
